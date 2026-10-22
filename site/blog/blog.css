@@ -17,7 +17,7 @@ img{max-width:100%}a{color:inherit}:focus-visible{outline:2px solid var(--ac);ou
 .post{padding:clamp(24px,5vw,64px) 0 clamp(56px,9vw,110px)}
 .post time,.arch time{display:block;font-family:var(--fl);font-size:.8rem;letter-spacing:.3em;color:var(--wd)}
 .post h1{font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.5;font-weight:500;margin:.4rem 0 2rem}
-.post .cv{margin:0 auto 2.4rem;max-width:1100px;padding:0 clamp(0px,3vw,40px)}.post .cv img{display:block;width:100%;height:auto}
+.post .cv{margin:0 auto 2.4rem;max-width:860px;padding:0 clamp(20px,5vw,72px)}.post .cv img{display:block;width:100%;height:auto}
 .post .body h2{font-size:clamp(1.2rem,2.4vw,1.6rem);font-weight:500;line-height:1.6;margin:2.6rem 0 1rem;padding-top:1.4rem;border-top:1px solid var(--line)}
 .post .body p{margin:0 0 1.4em}.post .body ul{margin:0 0 1.4em;padding-left:1.2em}.post .body li{margin:.2em 0}
 .post .body figure{margin:2rem 0}.post .body figure img{display:block;width:100%;height:auto}.post figcaption{color:var(--muted);font-size:.85rem;margin-top:.5rem}
