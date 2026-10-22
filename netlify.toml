@@ -1,0 +1,3 @@
+# Netlify: ビルドはしません。site/ フォルダの中身をそのまま公開します。
+[build]
+  publish = "site"

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://pool-nara-wedding.netlify.app/sitemap.xml
