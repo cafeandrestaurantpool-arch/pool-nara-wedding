@@ -18,6 +18,8 @@ post.md format:
 """
 import argparse, datetime as dt, html, json, os, re, shutil, sys
 from PIL import Image, ImageOps
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import make_i18n as i18n
 
 SITE = "https://pool-nara-wedding.netlify.app"
 NAME = "CAFE & RESTAURANT POOL"
@@ -247,18 +249,21 @@ def main():
         f'<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>WEDDING DIARY｜{e(NAME)}</title><link>{SITE}/blog/</link>'
         f'<description>奈良のウエディング二次会・貸切パーティーのブログ</description><language>ja</language><lastBuildDate>{now}</lastBuildDate>{items}</channel></rss>')
 
-    # sitemap
+    # sitemap（トップは5言語の相互リンク付き）
     last = posts[0]["date"].isoformat() if posts else dt.date.today().isoformat()
-    urls = [(SITE + "/", last, "weekly", "1.0")]
+    alts = "".join(f'<xhtml:link rel="alternate" hreflang="{i18n.HREFLANG[k]}" href="{SITE}{i18n.PATHS[k]}"/>' for k in i18n.PATHS) + f'<xhtml:link rel="alternate" hreflang="x-default" href="{SITE}/"/>'
+    rows = [f"  <url><loc>{SITE}{i18n.PATHS[k]}</loc><lastmod>{last}</lastmod><changefreq>weekly</changefreq><priority>{'1.0' if k == 'ja' else '0.9'}</priority>{alts}</url>\n" for k in i18n.PATHS]
+    urls = []
     if posts:
         urls.append((SITE + "/blog/", last, "daily", "0.8"))
         urls += [(f"{SITE}/blog/{p['slug']}/", p["date"].isoformat(), "yearly", "0.6") for p in posts]
     open(os.path.join(out, "sitemap.xml"), "w", encoding="utf-8").write(
-        '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+        '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' + "".join(rows) +
         "".join(f"  <url><loc>{u}</loc><lastmod>{l}</lastmod><changefreq>{c}</changefreq><priority>{pr}</priority></url>\n" for u, l, c, pr in urls) + "</urlset>\n")
 
     # top page
     t = open(os.path.join(src, "base", "index.template.html"), encoding="utf-8").read()
+    t_raw = t  # 多言語ページ用（日記ブロック挿入前）
     if posts:
         block = ('<div class="dy" id="diary"><i class="lb">( WEDDING DIARY )</i><h3 class="dy-h">奈良のウエディング二次会、毎日のブログ</h3><div class="dy-g">'
                  + "".join(card(p) for p in posts[:LATEST_ON_TOP]) + '</div><p class="dy-more"><a class="btn" href="/blog/">すべての記事を見る</a></p></div>')
@@ -266,7 +271,9 @@ def main():
         t = t.replace("<!--NAV-BLOG-->", '<a href="/blog/">DIARY</a>')
     else:
         t = t.replace("<!--NAV-BLOG-->", "")
+    t = i18n.apply_to_ja(t, SITE)
     open(os.path.join(out, "index.html"), "w", encoding="utf-8").write(t)
+    i18n.build_all(t_raw, out, SITE, "".join(card(p) for p in posts[:3]))
     print(f"OK: {len(posts)} 記事 -> {out}")
 
 

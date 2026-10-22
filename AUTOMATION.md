@@ -59,3 +59,8 @@ photo: photos/photo08.jpg
 4. 少人数・1.5次会・家族のお祝いの考え方
 5. お店の紹介（facts.md の範囲）
 6. 奈良で過ごす、結婚式前後の一日（観光は確認できる場所だけ）
+
+## 多言語トップページ（en / zh-hant / ko / fr）
+- `python3 tools/make_site.py --src src --out site` を実行すると、日本語トップ・ブログに加えて `site/en/` `site/zh-hant/` `site/ko/` `site/fr/` も自動で生成される（追加作業は不要）。
+- 翻訳は `tools/i18n/{en,zh,ko,fr}.py`。日本語マスター `src/base/index.template.html` の文章を変えたら、番号キーがずれるので4言語とも更新が必要（日々のブログ投稿では触らない）。
+- ブログ記事は日本語のみ。各言語のトップには最新3記事（日本語）への導線が自動で入る。
