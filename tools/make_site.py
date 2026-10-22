@@ -180,16 +180,16 @@ def main():
         od = os.path.join(out, "blog", slug)
         os.makedirs(od)
         cover = None
-        cw = ch = 0
+        cw = ch = tw = th = 0
         if meta.get("photo"):
             cover = "cover.jpg"
             cw, ch = prep_image(resolve_img(sd, meta["photo"]), os.path.join(od, "cover.jpg"), 1600)
-            prep_image(resolve_img(sd, meta["photo"]), os.path.join(od, "thumb.jpg"), 640)
+            tw, th = prep_image(resolve_img(sd, meta["photo"]), os.path.join(od, "thumb.jpg"), 640)
         content = md_body(body, slug, od, sd)
         txt = plain(body)
         excerpt = txt[:70] + ("…" if len(txt) > 70 else "")
         desc = (txt[:110] + ("…" if len(txt) > 110 else "")) or meta["title"]
-        posts.append(dict(slug=slug, title=meta["title"], date=d, cover=cover, cw=cw, ch=ch, content=content, excerpt=excerpt, desc=desc))
+        posts.append(dict(slug=slug, title=meta["title"], date=d, cover=cover, cw=cw, ch=ch, tw=tw, th=th, content=content, excerpt=excerpt, desc=desc))
     posts.sort(key=lambda p: (p["date"], p["slug"]), reverse=True)
 
     # individual pages
@@ -221,7 +221,7 @@ def main():
 
     # archive
     def card(p, cls="dy-c"):
-        im = f'<img src="/blog/{p["slug"]}/thumb.jpg" alt="{e(p["title"])}" width="640" height="480" loading="lazy">' if p["cover"] else '<img alt="" width="640" height="480" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=">'
+        im = f'<img src="/blog/{p["slug"]}/thumb.jpg" alt="{e(p["title"])}" width="{p["tw"]}" height="{p["th"]}" loading="lazy">' if p["cover"] else ''
         return (f'<a class="{cls}" href="/blog/{p["slug"]}/">{im}<time datetime="{p["date"].isoformat()}">{p["date"].strftime("%Y.%m.%d")}</time>'
                 f'<b>{e(p["title"])}</b><span>{e(p["excerpt"])}</span></a>')
 
