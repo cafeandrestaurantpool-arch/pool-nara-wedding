@@ -1,0 +1,32 @@
+# main に push されるたびに、site/ を GitHub Pages に公開する（回数制限なし）。
+# リンクは tools/pages_fix.py が GitHub Pages 用に書きかえる（site/ そのものは変えない）。
+name: Publish to GitHub Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare site for GitHub Pages
+        run: |
+          cp -r site _pages
+          python3 tools/pages_fix.py _pages pool-nara-wedding
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _pages
+      - id: deployment
+        uses: actions/deploy-pages@v4

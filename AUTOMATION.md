@@ -64,3 +64,8 @@ photo: photos/photo08.jpg
 - `python3 tools/make_site.py --src src --out site` を実行すると、日本語トップ・ブログに加えて `site/en/` `site/zh-hant/` `site/ko/` `site/fr/` も自動で生成される（追加作業は不要）。
 - 翻訳は `tools/i18n/{en,zh,ko,fr}.py`。日本語マスター `src/base/index.template.html` の文章を変えたら、番号キーがずれるので4言語とも更新が必要（日々のブログ投稿では触らない）。
 - ブログ記事は日本語のみ。各言語のトップには最新3記事（日本語）への導線が自動で入る。
+
+## 公開先（2026-11-01 から GitHub Pages）
+- Netlify の無料枠（公開回数の上限）で公開が止まったため、GitHub Pages に移した。公開アドレスは https://cafeandrestaurantpool-arch.github.io/pool-nara-wedding/
+- main に push すると、.github/workflows/pages.yml が自動で公開する（回数制限なし。1〜2分で反映）。
+- リンクの書きかえは tools/pages_fix.py が公開のときだけ行う。site/ の中身や make_site.py は、これまでどおりでよい。
