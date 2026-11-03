@@ -4,7 +4,7 @@
 
 ## 毎日やること
 1. このリポジトリを最新にする（`git pull`）。
-2. `src/posts/` の既存記事のタイトルを全部読み、**同じ話題・同じ切り口を避ける**。
+2. リポジトリ直下の `SEO_FOCUS.md`（週1回のSEO担当が書く「今週ねらうテーマ」）を読む。あわせて、`src/posts/` の既存記事のタイトルを全部読み、**同じ話題・同じ切り口を避ける**。
 3. 先に「Googleドライブの「POOL写真」フォルダの写真を使う」の節を実行する。そのあと、今日の記事を1本書く（日付は日本時間の今日）。フォルダ名は `src/posts/YYYY-MM-DD/`、本文は `post.md`。同じ日に2本目を書くときは `YYYY-MM-DD-2`。
 4. `python3 tools/make_site.py --src src --out site` を実行する（`site/` が作り直される）。
 5. `site/` を確認し（記事ページと一覧が出ていること）、`git add -A && git commit && git push`。
@@ -69,3 +69,8 @@ photo: photos/photo08.jpg
 - Netlify の無料枠（公開回数の上限）で公開が止まったため、GitHub Pages に移した。公開アドレスは https://cafeandrestaurantpool-arch.github.io/pool-nara-wedding/
 - main に push すると、.github/workflows/pages.yml が自動で公開する（回数制限なし。1〜2分で反映）。
 - リンクの書きかえは tools/pages_fix.py が公開のときだけ行う。site/ の中身や make_site.py は、これまでどおりでよい。
+
+
+## 週1回のSEO・集客
+- 手順は pool-site リポジトリの `SEO_WEEKLY.md`。毎週、順位の確認・点検・改善をして、`SEO_FOCUS.md` を更新する。
+- `src/base/_redirects` は、旧Netlifyのアドレスから新アドレスへ転送する設定。消さない。
