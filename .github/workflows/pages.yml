@@ -24,9 +24,12 @@ jobs:
         run: |
           cp -r site _pages
           python3 tools/pages_fix.py _pages pool-nara-wedding
+          printf '%s' f5583eafcedf018d704433ef65b0ce92 > _pages/f5583eafcedf018d704433ef65b0ce92.txt  # IndexNow の鍵
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _pages
       - id: deployment
         uses: actions/deploy-pages@v4
+      - name: Notify search engines (IndexNow)
+        run: python3 tools/indexnow.py _pages https://cafeandrestaurantpool-arch.github.io/pool-nara-wedding/ || true

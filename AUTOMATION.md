@@ -74,3 +74,7 @@ photo: photos/photo08.jpg
 ## 週1回のSEO・集客
 - 手順は pool-site リポジトリの `SEO_WEEKLY.md`。毎週、順位の確認・点検・改善をして、`SEO_FOCUS.md` を更新する。
 - `src/base/_redirects` は、旧Netlifyのアドレスから新アドレスへ転送する設定。消さない。
+
+## IndexNow（Bing などに新しいページを自動で知らせる）
+- 公開のあと、GitHub Actions が `tools/indexnow.py` を実行し、更新日が直近3日のページだけを送る。鍵は `f5583eafcedf018d704433ef65b0ce92`（鍵ファイルは公開のときに自動で置かれる）。
+- `tools/indexnow.py` と、Actions の IndexNow の手順は消さない。Google は IndexNow を使わないので、Google にはサイトマップ（Search Console）で知らせる。
