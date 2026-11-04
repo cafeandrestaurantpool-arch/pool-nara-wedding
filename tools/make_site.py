@@ -173,6 +173,8 @@ def main():
         if (g.startswith("google") and g.endswith(".html")) or g in ("_redirects", "llms.txt"):
             shutil.copy(os.path.join(src, "base", g), out)
     shutil.copy(os.path.join(os.path.dirname(os.path.abspath(__file__)), "blog.css"), os.path.join(out, "blog", "blog.css"))
+    # トップの写真（日本語版・各言語版で共有。元の画像ファイルをそのままコピー）
+    shutil.copytree(os.path.join(src, "base", "img"), os.path.join(out, "img"))
 
     posts = []
     pdir = os.path.join(src, "posts")
@@ -222,7 +224,7 @@ def main():
                 f'<div class="cta"><a class="btn m" href="{RESERVE}">空席を確認して予約</a><a class="btn" href="/#plan">プランを見る</a></div></aside>{pn}'
                 f'<p><a class="btn" href="/blog/">記事の一覧へ</a></p></div></article></main>')
         open(os.path.join(out, "blog", p["slug"], "index.html"), "w", encoding="utf-8").write(
-            page(title, desc if len(p["desc"]) > 20 else p["title"], url, img, body, ld))
+            page(title, p["desc"] if len(p["desc"]) > 20 else p["title"], url, img, body, ld))
 
     # archive
     def card(p, cls="dy-c"):
