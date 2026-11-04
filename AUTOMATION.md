@@ -78,3 +78,6 @@ photo: photos/photo08.jpg
 ## IndexNow（Bing などに新しいページを自動で知らせる）
 - 公開のあと、GitHub Actions が `tools/indexnow.py` を実行し、更新日が直近3日のページだけを送る。鍵は `f5583eafcedf018d704433ef65b0ce92`（鍵ファイルは公開のときに自動で置かれる）。
 - `tools/indexnow.py` と、Actions の IndexNow の手順は消さない。Google は IndexNow を使わないので、Google にはサイトマップ（Search Console）で知らせる。
+
+## 電話番号
+- お店の電話番号は **0742-42-6430** に統一する（オーナーの指示、2026-11-04）。050-5487-7047 は使わない。Googleやお店のサイトと同じ番号にそろえることで、検索とAI検索で同じお店だと正しく伝わる。

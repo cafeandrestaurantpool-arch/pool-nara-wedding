@@ -36,7 +36,7 @@ LANG = dict(
 
 T = {
     9: "ORGANISATEUR",
-    13: "TÉL. +81-50-5487-7047",
+    13: "TÉL. +81-742-42-6430",
     17: "After-party de mariage (nijikai) et soirée 1.5 privatisées à Nara",
     18: "Toute une maison, rien que pour vous deux.",
     19: "Une cuisine française aux légumes de saison de Nara, et la liberté d'une maison entièrement privatisée. CAFE & RESTAURANT POOL accueille after-parties et fêtes de mariage de 20 à 60 invités, exactement comme vous les imaginez.",
@@ -178,7 +178,7 @@ T = {
     192: "Privatisation",
     193: "Tenue",
     194: "Téléphone",
-    195: "+81-50-5487-7047",
+    195: "+81-742-42-6430",
     196: "Liens",
     197: "Page officielle (japonais)",
     198: "Détails de l'after-party de mariage (japonais)",

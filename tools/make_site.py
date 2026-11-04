@@ -23,7 +23,7 @@ import make_i18n as i18n
 
 SITE = "https://pool-nara-wedding.netlify.app"
 NAME = "CAFE & RESTAURANT POOL"
-TEL = "+815054877047"
+TEL = "+81742426430"
 RESERVE = "https://r.gnavi.co.jp/plan/ery83tn00000/plan-reserve/plan/plan_list/#wrapper"
 KEYWORDS = "奈良,ウエディング,二次会,2次会,結婚式,貸切,ブログ"
 LATEST_ON_TOP = 6
@@ -123,7 +123,7 @@ HEAD_FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link 
 def header_html():
     return ('<header class="top"><a class="mk" href="/" aria-label="CAFE ＆ RESTAURANT POOL"><small>CAFE ＆ RESTAURANT</small><b>POOL</b><small>NARA</small></a>'
             '<nav aria-label="メニュー"><a href="/#wedding">WEDDING</a><a href="/blog/">DIARY</a><a href="/#plan">PLAN</a><a href="/#kanji">KANJI</a><a href="/#info">ACCESS</a><a href="/#faq">FAQ</a></nav>'
-            f'<a class="tel" href="tel:{TEL}">TEL 050-5487-7047</a></header>')
+            f'<a class="tel" href="tel:{TEL}">TEL 0742-42-6430</a></header>')
 
 
 def footer_html():
