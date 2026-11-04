@@ -1,0 +1,19 @@
+# CAFE & RESTAURANT POOL — 奈良のウエディング二次会・貸切パーティー
+
+> 奈良市船橋町の一軒家カジュアルフレンチ「CAFE & RESTAURANT POOL」の、結婚式二次会（2次会）・1.5次会・貸切パーティーの案内サイト。近鉄奈良駅から徒歩9分。20名様から一軒家を貸切にでき、着席20名・立食60名まで。
+
+- 二次会プラン：前菜から〆のパスタ、デザートまで全7品＋2時間飲み放題、お一人様6,000円（税込）。ネット予約で20名様以上なら幹事様1名無料
+- 120分飲み放題＋お料理プラン：5,500円/名（税込）、メッセージプレート付き
+- おまかせコース：5,500円〜/名（税込）、2名様から
+- 1.5次会・会費制パーティーは、人数や希望をうかがって案内
+- お子様：乳児からOK、離乳食の持ち込みOK、ベビーカーで入店OK
+- 住所：〒630-8258 奈良県奈良市船橋町7／近鉄奈良駅から徒歩9分、JR奈良駅から徒歩11分
+- 営業時間：ランチ 11:30〜15:00／ディナー 18:00〜22:00。定休日：火曜日、第2水曜日
+- オーナーシェフ：杉原 勇博（奈良生まれ。フランスや東京で修行後、2018年に奈良でオープン）
+- 予約：https://r.gnavi.co.jp/plan/ery83tn00000/plan-reserve/plan/plan_list/#wrapper
+- お店のサイト（ランチ・ディナー）：https://cafeandrestaurantpool-arch.github.io/pool-site/
+
+## ページ
+- [トップ（プラン・よくある質問）](https://cafeandrestaurantpool-arch.github.io/pool-nara-wedding/)
+- [WEDDING DIARY（幹事さん向けの準備・進行・会場選びのガイド）](https://cafeandrestaurantpool-arch.github.io/pool-nara-wedding/blog/)
+- English: https://cafeandrestaurantpool-arch.github.io/pool-nara-wedding/en/ ／ 中文（繁體）: https://cafeandrestaurantpool-arch.github.io/pool-nara-wedding/zh-hant/ ／ 한국어: https://cafeandrestaurantpool-arch.github.io/pool-nara-wedding/ko/ ／ Français: https://cafeandrestaurantpool-arch.github.io/pool-nara-wedding/fr/

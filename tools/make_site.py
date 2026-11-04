@@ -170,7 +170,7 @@ def main():
     shutil.copy(os.path.join(src, "base", "ogp.jpg"), out)
     shutil.copy(os.path.join(src, "base", "robots.txt"), out)
     for g in os.listdir(os.path.join(src, "base")):  # Search Console の確認ファイルと、旧Netlifyからの転送設定
-        if (g.startswith("google") and g.endswith(".html")) or g == "_redirects":
+        if (g.startswith("google") and g.endswith(".html")) or g in ("_redirects", "llms.txt"):
             shutil.copy(os.path.join(src, "base", g), out)
     shutil.copy(os.path.join(os.path.dirname(os.path.abspath(__file__)), "blog.css"), os.path.join(out, "blog", "blog.css"))
 
