@@ -279,7 +279,10 @@ def main():
     t = i18n.apply_to_ja(t, SITE)
     open(os.path.join(out, "index.html"), "w", encoding="utf-8").write(t)
     i18n.build_all(t_raw, out, SITE, "".join(card(p) for p in posts[:3]))
-    print(f"OK: {len(posts)} 記事 -> {out}")
+    # Google Analytics 4（全ページに1回だけ。予約・電話ボタンのクリックも記録）
+    import analytics
+    ga = analytics.add_ga4(out)
+    print(f"OK: {len(posts)} 記事 -> {out}（GA4: {ga}ページ）")
 
 
 if __name__ == "__main__":
