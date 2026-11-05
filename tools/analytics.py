@@ -9,7 +9,7 @@
 """
 import os
 
-GA_ID = "G-MOR6JDYLBK"
+GA_ID = "G-M0R6JDYLBK"
 RESERVE_MATCH = "r.gnavi.co.jp/plan/ery83tn00000/plan-reserve"
 
 SNIPPET = (
