@@ -27,7 +27,7 @@ LANG = dict(
     switch="Langue", diary_h="Notre blog quotidien sur les after-parties de mariage à Nara (en japonais)", diary_btn="Voir tous les articles (en japonais)",
     ld=dict(
         desc="Restaurant français décontracté à Nara. Avec des plats aux légumes de saison de la préfecture de Nara, nous accueillons after-parties de mariage (nijikai), soirées « 1.5 » et fêtes privatisées.",
-        keywords="Nara, after-party de mariage, nijikai, soirée 1.5, privatisation, gare Kintetsu-Nara, salle de mariage Nara",
+        keywords="Nara, after-party de mariage, nijikai, soirée 1.5, privatisation, gare Kintetsu-Nara, salle de mariage Nara, fête de fin d'année, Nouvel An, pot de départ, vins nature, vins bio",
         cuisine="Française", job="Chef-propriétaire", area="Nara", home="Accueil",
         alt=["CAFE & RESTAURANT POOL", "POOL Nara"],
     ),
@@ -205,7 +205,7 @@ T = {
     220: "Oui. Si vous nous prévenez à l'avance, nous vous conseillerons selon vos besoins. Merci de nous le dire lors de la réservation.",
     222: "Vous cherchez un lieu de mariage ou d'after-party à Nara ?",
     223: "CAFE & RESTAURANT POOL est un restaurant français décontracté situé dans la galerie marchande de Funahashi, à Nara, à 9 minutes à pied de la gare Kintetsu-Nara et 11 minutes de la gare JR Nara. Avec des plats aux légumes de saison de Nara, vous pouvez organiser une after-party de mariage (nijikai), une soirée 1.5, une fête de mariage ou une petite célébration, sous la forme qui vous convient.",
-    224: "La privatisation est possible de 20 à 60 invités. La formule after-party avec 7 plats et 2 h de boissons à volonté est à 6 000 JPY par personne. Nous avons aussi préparé un guide pour l'organisateur et une liste de vérification des équipements et objets apportés. Si vous envisagez une after-party de mariage à Nara, vérifiez les disponibilités et contactez-nous.",
+    224: "La privatisation est possible de 20 à 60 invités. La formule after-party avec 7 plats et 2 h de boissons à volonté est à 6 000 JPY par personne. Nous avons aussi préparé un guide pour l'organisateur et une liste de vérification des équipements et objets apportés. Si vous envisagez une after-party de mariage à Nara, vérifiez les disponibilités et contactez-nous. Fêtes de fin d'année, du Nouvel An ou de départ : la privatisation est aussi possible. Notre carte propose des vins nature et bio qui accompagnent la cuisine.",
     226: "Un jour rien qu'à vous, ici. N'hésitez pas à nous contacter d'abord.",
     227: "© CAFE & RESTAURANT POOL  Informations issues de sources publiques telles que Rakuten Gurunavi. Merci de confirmer les derniers prix et jours d'ouverture auprès du restaurant.",
     228: "Réserver",

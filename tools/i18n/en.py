@@ -197,7 +197,7 @@ T = {
     220: "Yes. If you let us know in advance, we will advise according to your needs. Please tell us when booking.",
     222: "Looking for a wedding or after-party venue in Nara?",
     223: "CAFE & RESTAURANT POOL is a casual French restaurant in the Funahashi shopping street of Nara City, a 9-minute walk from Kintetsu-Nara Station and 11 minutes from JR Nara Station. With dishes made from seasonal vegetables of Nara, you can hold a wedding after-party (nijikai), a 1.5 party, a wedding party, or a small celebration, in the form that suits you.",
-    224: "Private hire is available for 20 to 60 guests. The after-party plan with 7 dishes and a 2-hour all-you-can-drink is JPY 6,000 per person. We also prepared an organizer's guide and a checklist for facilities and outside items. If you are considering a wedding after-party in Nara, please check availability and talk to us.",
+    224: "Private hire is available for 20 to 60 guests. The after-party plan with 7 dishes and a 2-hour all-you-can-drink is JPY 6,000 per person. We also prepared an organizer's guide and a checklist for facilities and outside items. If you are considering a wedding after-party in Nara, please check availability and talk to us. Year-end, New Year and farewell parties can also be held as private events. Our wine list features natural and organic wines that go well with the food.",
     226: "A day that is yours alone, right here. Please feel free to contact us first.",
     227: "© CAFE & RESTAURANT POOL  Information is based on public sources such as Rakuten Gurunavi. Please confirm the latest prices and opening days with the restaurant.",
     228: "Reserve",
@@ -207,7 +207,7 @@ LANG.update(
     switch="Language", diary_h="Our daily blog about wedding after-parties in Nara (Japanese)", diary_btn="Read all articles (Japanese)",
     ld=dict(
         desc="A casual French restaurant in Nara City. With dishes made from Nara-grown seasonal vegetables, we host wedding after-parties (nijikai), 1.5 parties and private parties.",
-        keywords="Nara, wedding after-party, nijikai, 1.5 party, private hire, Kintetsu-Nara Station, wedding party venue Nara",
+        keywords="Nara, wedding after-party, nijikai, 1.5 party, private hire, Kintetsu-Nara Station, wedding party venue Nara, year-end party, New Year party, farewell party, natural wine, organic wine",
         cuisine="French", job="Owner chef", area="Nara City", home="Home",
         alt=["CAFE & RESTAURANT POOL", "POOL Nara"],
     ),
