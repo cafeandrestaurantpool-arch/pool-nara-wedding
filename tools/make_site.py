@@ -216,12 +216,17 @@ def main():
         nxt = posts[i - 1] if i > 0 else None
         pn = '<nav class="pn" aria-label="前後の記事">' + (f'<a href="/blog/{prev["slug"]}/">← {e(prev["title"])}</a>' if prev else "<span></span>") + \
              (f'<a href="/blog/{nxt["slug"]}/">{e(nxt["title"])} →</a>' if nxt else "<span></span>") + "</nav>"
+        # 関連する記事：タイトルの言葉が重なる記事を3本（前後の記事は除く）。記事どうしをつなぎ、検索で見つけてもらいやすくする
+        tw = lambda t: set(re.findall(r"[一-龥ァ-ヶー]{2,}", t)) - {"奈良", "二次会", "幹事", "さん"}
+        near = {q["slug"] for q in (prev, nxt) if q} | {p["slug"]}
+        rel = sorted((q for q in posts if q["slug"] not in near), key=lambda q: (len(tw(p["title"]) & tw(q["title"])), q["date"]), reverse=True)[:3]
+        rl = ('<nav class="rel" aria-label="関連する記事"><b>関連する記事</b><ul>' + "".join(f'<li><a href="/blog/{q["slug"]}/">{e(q["title"])}</a></li>' for q in rel) + "</ul></nav>") if rel else ""
         hero = f'<figure class="cv"><img src="/blog/{p["slug"]}/cover.jpg" alt="{e(p["title"])}" width="{p["cw"]}" height="{p["ch"]}"></figure>' if p["cover"] else ""
         body = (f'<main><article class="post"><div class="wrap narrow"><p class="crumb"><a href="/">HOME</a> / <a href="/blog/">WEDDING DIARY</a></p>'
                 f'<time datetime="{ds}">{p["date"].strftime("%Y.%m.%d")}</time><h1>{e(p["title"])}</h1></div>{hero}'
                 f'<div class="wrap narrow body">{p["content"]}'
                 f'<aside class="cta-box"><b>奈良で、ウエディング二次会（2次会）を。</b><p>一軒家を貸し切る20〜60名のパーティー。空席のご確認、ご相談はこちらから。</p>'
-                f'<div class="cta"><a class="btn m" href="{RESERVE}">空席を確認して予約</a><a class="btn" href="/#plan">プランを見る</a></div></aside>{pn}'
+                f'<div class="cta"><a class="btn m" href="{RESERVE}">空席を確認して予約</a><a class="btn" href="/#plan">プランを見る</a></div></aside>{rl}{pn}'
                 f'<p><a class="btn" href="/blog/">記事の一覧へ</a></p></div></article></main>')
         open(os.path.join(out, "blog", p["slug"], "index.html"), "w", encoding="utf-8").write(
             page(title, p["desc"] if len(p["desc"]) > 20 else p["title"], url, img, body, ld))
