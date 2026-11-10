@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ご予約</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="head">
+  <div class="wrap">
+    <a class="brand" id="brand" href="#"><span id="shopName"></span><small id="tagline"></small></a>
+    <span class="demo-badge hidden" id="demoBadge">お試しモード</span>
+  </div>
+</header>
+
+<main class="wrap" id="app">
+  <section class="step" id="s-plan">
+    <h2><span class="n">1</span>プランを選ぶ</h2>
+    <div class="plans" id="plans"></div>
+  </section>
+
+  <section class="step" id="s-people">
+    <h2><span class="n">2</span>人数</h2>
+    <div class="stepper">
+      <button type="button" id="minus" aria-label="1名へらす">−</button>
+      <output id="people" aria-live="polite"></output>
+      <button type="button" id="plus" aria-label="1名ふやす">＋</button>
+    </div>
+    <p class="muted small" id="peopleNote"></p>
+  </section>
+
+  <section class="step" id="s-date">
+    <h2><span class="n">3</span>日にち</h2>
+    <div class="cal-nav">
+      <button type="button" id="prev" aria-label="前の月">‹ 前の月</button>
+      <b id="monthLabel"></b>
+      <button type="button" id="next" aria-label="次の月">次の月 ›</button>
+    </div>
+    <div class="cal" id="cal" aria-label="カレンダー"></div>
+    <div class="legend"><span>○ 空きあり</span><span>△ 残りわずか</span><span>× 満席</span><span>休 お休み</span></div>
+    <div id="calMsg"></div>
+  </section>
+
+  <section class="step off" id="s-time">
+    <h2><span class="n">4</span>時刻</h2>
+    <p class="muted small" id="timeLead">日にちを選ぶと、時刻が出ます。</p>
+    <div class="times" id="times"></div>
+  </section>
+
+  <section class="step off" id="s-form">
+    <h2><span class="n">5</span>お客様の情報</h2>
+    <form id="form" novalidate>
+      <div class="grid2">
+        <div class="field"><label for="f-name">お名前<span class="req">必須</span></label><input id="f-name" name="name" autocomplete="name" required maxlength="60"></div>
+        <div class="field"><label for="f-kana">フリガナ</label><input id="f-kana" name="kana" maxlength="60"></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label for="f-tel">電話番号<span class="req">必須</span></label><input id="f-tel" name="tel" type="tel" autocomplete="tel" inputmode="tel" required placeholder="090-1234-5678" maxlength="16"></div>
+        <div class="field"><label for="f-email">メールアドレス</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="受付メールが届きます" maxlength="120"></div>
+      </div>
+      <div class="field"><label for="f-request">ご要望</label><textarea id="f-request" name="request" maxlength="1000" placeholder="アレルギー、お祝いの内容、お子様連れなど"></textarea></div>
+      <div class="hp" aria-hidden="true"><label>空欄のまま<input name="website" tabindex="-1" autocomplete="off"></label></div>
+      <label class="check hidden" id="agreeRow"><input type="checkbox" id="agree"><span><a id="privacyLink" target="_blank" rel="noopener">個人情報の取り扱い</a>に同意します</span></label>
+      <div id="formMsg"></div>
+      <button class="btn wide" type="submit">内容を確認する</button>
+    </form>
+  </section>
+
+  <section class="step hidden" id="s-confirm">
+    <h2>この内容で送りますか？</h2>
+    <dl class="summary" id="summary"></dl>
+    <div id="sendMsg"></div>
+    <div class="actions">
+      <button class="btn" type="button" id="send">送信する</button>
+      <button class="btn ghost" type="button" id="back">直す</button>
+    </div>
+  </section>
+
+  <section class="step done hidden" id="s-done">
+    <h2 style="justify-content:center" id="doneTitle"></h2>
+    <p class="muted">予約番号</p>
+    <p class="id" id="doneId"></p>
+    <p id="doneText"></p>
+    <div class="actions" style="justify-content:center">
+      <a class="btn ghost hidden" id="homeLink">サイトへ戻る</a>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <ul id="notes"></ul>
+    <p><b id="footName"></b><br><span id="footAddr"></span><br><span id="footHours"></span><br>お電話：<a id="footTel"></a></p>
+  </footer>
+</main>
+
+<script src="config.js"></script>
+<script src="assets/core.js"></script>
+<script src="assets/common.js"></script>
+<script src="assets/reserve.js"></script>
+</body>
+</html>

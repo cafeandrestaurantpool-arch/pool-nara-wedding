@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>予約管理</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/admin.css">
+</head>
+<body class="admin">
+<header class="head">
+  <div class="wrap wide">
+    <span class="brand"><span id="shopName"></span><small>予約管理</small></span>
+    <span class="demo-badge hidden" id="demoBadge">お試しモード</span>
+    <nav class="top-actions hidden" id="topActions">
+      <button class="btn small" type="button" id="newBtn">＋ 予約を入れる</button>
+      <button class="btn small ghost" type="button" id="csvBtn">CSV</button>
+      <button class="btn small ghost" type="button" id="logoutBtn">ログアウト</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap wide">
+  <!-- ログイン -->
+  <section class="step login" id="login">
+    <h2>管理画面に入る</h2>
+    <form id="loginForm">
+      <div class="field"><label for="pass">パスコード</label><input id="pass" type="password" autocomplete="current-password" required></div>
+      <p class="muted small" id="loginHint"></p>
+      <div id="loginMsg"></div>
+      <button class="btn wide" type="submit">入る</button>
+    </form>
+  </section>
+
+  <div id="main" class="hidden">
+    <!-- 今日のまとめ -->
+    <section class="stats" id="stats"></section>
+
+    <div class="tabs" role="tablist">
+      <button role="tab" class="tab on" data-tab="list">予約一覧</button>
+      <button role="tab" class="tab" data-tab="cal">カレンダー</button>
+      <button role="tab" class="tab" data-tab="block">休業日・貸切</button>
+    </div>
+
+    <!-- 一覧 -->
+    <section class="panel" id="tab-list">
+      <div class="filters">
+        <label>から<input type="date" id="from"></label>
+        <label>まで<input type="date" id="to"></label>
+        <label class="grow">さがす<input type="search" id="q" placeholder="名前・電話・予約番号"></label>
+        <button class="btn small ghost" type="button" id="todayBtn">今日</button>
+      </div>
+      <div class="chips" id="chips"></div>
+      <div id="listMsg"></div>
+      <div id="list"></div>
+    </section>
+
+    <!-- カレンダー -->
+    <section class="panel hidden" id="tab-cal">
+      <div class="cal-nav">
+        <button type="button" id="calPrev">‹ 前の月</button>
+        <b id="calLabel"></b>
+        <button type="button" id="calNext">次の月 ›</button>
+      </div>
+      <div class="acal" id="acal"></div>
+      <p class="muted small">数字は「件数／人数」。日にちを押すと、その日の一覧が出ます。</p>
+    </section>
+
+    <!-- 休業日・貸切 -->
+    <section class="panel hidden" id="tab-block">
+      <p class="muted small">ここに入れた日時は、予約画面で選べなくなります。時刻を空けると終日です（例：貸切 18:00〜22:00）。</p>
+      <form class="filters" id="blockForm">
+        <label>日付<input type="date" id="b-date" required></label>
+        <label>開始<input type="time" id="b-from" step="1800"></label>
+        <label>終了<input type="time" id="b-to" step="1800"></label>
+        <label class="grow">メモ<input id="b-memo" placeholder="臨時休業、貸切 など"></label>
+        <button class="btn small" type="submit">追加</button>
+      </form>
+      <div id="blockMsg"></div>
+      <div id="blocks"></div>
+      <p class="muted small" id="rulesText"></p>
+    </section>
+  </div>
+</main>
+
+<!-- 予約の詳しい内容・新しい予約 -->
+<dialog id="dlg">
+  <form method="dialog" id="dlgForm" class="dlg">
+    <div class="dlg-head">
+      <h2 id="dlgTitle"></h2>
+      <button class="x" value="cancel" aria-label="閉じる" formnovalidate>×</button>
+    </div>
+    <div class="quick" id="quick"></div>
+    <div class="grid2">
+      <div class="field"><label for="d-date">来店日</label><input id="d-date" type="date" required></div>
+      <div class="field"><label for="d-time">時刻</label><input id="d-time" type="time" step="900" required></div>
+    </div>
+    <div class="grid2">
+      <div class="field"><label for="d-people">人数</label><input id="d-people" type="number" min="1" max="999" required></div>
+      <div class="field"><label for="d-status">状態</label><select id="d-status"></select></div>
+    </div>
+    <div class="field"><label for="d-plan">プラン</label><input id="d-plan" list="planList"><datalist id="planList"></datalist></div>
+    <div class="grid2">
+      <div class="field"><label for="d-name">お名前</label><input id="d-name" required></div>
+      <div class="field"><label for="d-kana">フリガナ</label><input id="d-kana"></div>
+    </div>
+    <div class="grid2">
+      <div class="field"><label for="d-tel">電話番号 <a id="telLink" class="small"></a></label><input id="d-tel" type="tel"></div>
+      <div class="field"><label for="d-email">メール <a id="mailLink" class="small"></a></label><input id="d-email" type="email"></div>
+    </div>
+    <div class="field"><label for="d-request">ご要望（お客様が書いたこと）</label><textarea id="d-request"></textarea></div>
+    <div class="field"><label for="d-memo">お店メモ（お客様には見えません）</label><textarea id="d-memo" placeholder="アレルギー対応、席の希望、前金 など"></textarea></div>
+    <label class="check" id="notifyRow"><input type="checkbox" id="d-notify" checked><span>「確定」にしたら、お客様に確定メールを送る</span></label>
+    <p class="muted small" id="dlgMeta"></p>
+    <div id="dlgMsg"></div>
+    <div class="actions">
+      <button class="btn" type="button" id="saveBtn">保存</button>
+      <button class="btn ghost" value="cancel" formnovalidate>閉じる</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="config.js"></script>
+<script src="assets/core.js"></script>
+<script src="assets/common.js"></script>
+<script src="assets/admin.js"></script>
+</body>
+</html>
